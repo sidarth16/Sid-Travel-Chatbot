@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="/static/style.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+        
+    </head>
+    <body >
+        <!-- <h1><b>Sid Travel Bot</b></h1> -->
+        <img style="margin-left: 480px;padding-top: 15px;" src="../static/logo.png">
+        
+        <div >
+            <div id = "chatbox">
+                <p class = "botText ">
+                    <span class="s1_cont">Hi I am Sidarth</span><br><br>
+                    <span class="s2_mid">Welcome to <b>Sid Travel Bot</b> </span><br><br>
+                    <span class="s2">We'll take you mile. . .s with smile. . .s &#128522;</span><br><br><br>
+                    <span class="s1_cont">Now that the long &#128274;lockdown has come to an end </span><br><br>
+                    <span class="s2">its time to get some fresh air !!!</span><br><br><br>
+                    <span class="s1_cont">Well , Let's start planning &#128526;</span><br><br> 
+                    <span class="s2">May I know your name please..&#10068;</span><br>   
+                </p>
+            </div>
+            
+            <div id = "userInput">
+ 
+                <input  id ="textInput" required type ="text" name="msg" placeholder="your-input-message" >
+                <input id = "buttonInput" type = "submit" value="Send">
+                
+                <div id="userOptions" style="width: 57%; margin-left: 80px;" >
+                    <!-- option buttons will be updated here -->
+                </div>
+                <script>
+                    function changeText(value) {
+                        document.getElementById('textInput').value = "" + value;
+                        
+                    }
+                    function changeTextDate(value){
+                        var res = value.split("-").reverse();
+                        res = res.join("-")
+                        document.getElementById('textInput').value = "" + res;
+                    }
+                    function getBotResponse(){
+                        debugger;
+                        var rawText = $("#textInput").val();
+                        var userHtml = '<br><br><p class = "userText"><span>' + rawText + '</span></p>';
+                        $("#textInput").val("");
+                        $("#chatbox").append(userHtml);
+                        
+                        if (rawText=="Plan Again"){
+                            document.getElementById("chatbox").innerHTML = "<br>";
+                        }
+                        $.get("/get", {msg:rawText }).done(function(data) {
+                            var botHtml = data ;
+                            $("#chatbox").append(botHtml);
+                            
+                        });
+                        
+                        $.get("/getOption").done(function(data) {
+                            if (data=="<br><br><br>"){
+                                document.getElementById("textInput").disabled = false;
+                                $('html,body').animate({scrollTop: $("#userInput").offset().top}, { duration: 'slow', easing: 'swing'});
+                            }
+                            else{
+                                document.getElementById("textInput").disabled = true;
+                            }
+                            
+                            var userOptions = data ;
+                            document.getElementById("userOptions").innerHTML = userOptions;
+                            
+                            $('html,body').animate({scrollTop: $("#userOptions").offset().top}, { duration: 'slow', easing: 'swing'});
+                        });
+                    }
+                    
+                    $("#textInput").keypress(function(e) {
+                        if(e.which == 13) {
+                            if(document.getElementById("textInput").value==""){
+                                alert("Please fill the input field")
+                            }
+                            else{
+                                getBotResponse();
+                            }                           
+                        }
+                    });
+                    $("#buttonInput").click(function() {
+                        if(document.getElementById("textInput").value==""){
+                            alert("Please fill the input field")
+                        }
+                        else{
+                            getBotResponse();
+                        }         
+                    })
+                </script>
+
+            </div> 
+   
+        </div>
+    </body>
+</html>
