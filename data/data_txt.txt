@@ -1,0 +1,34 @@
+name
+I would love to chat with you to + know more about your upcoming trip + Can you give the exact date of your travel..&#10068;
+datex
+How long are you planning to take Off..&#10068;
+duration
+Great &#128077; +  Hope you are combining weekends + to save on your leaves. + Please select your destination &#128071;
+destination
+Nice choice &#128525; + With whom are you travelling ...&#10068;
+Solo
+Nice way to Explore yourself &#129488; + What is your tentative budget &#128176; for the trip..&#10068;
+Couple
+Vacations are an awesome way to bond &#129505; + What is your tentative budget &#128176; for the trip..&#10068;
+Family
+Vacations are an awesome way to bond &#129505; + How many members are travelling..&#10068;
+Friends
+Do i smell a bachelor's trip &#129346; + How many members are travelling..&#10068;
+members
+What is your tentative budget &#128176; for the trip..&#10068;
+budget
+Please select your departure city &#128071;
+city
+What is your preferred mode of transport ..&#10068;
+transport
+Great , We are almost done &#128077; + I will need your Email Id &#128231; to send you + the itinerary along with the budget details .
+email
+You are all set &#129312;  + For our travel expert to connect with you + I would like to have your contact number &#128222;
+contact
+Got it &#9996; + Our Expert will call you soon. + If you have any queries feel free to reach us at + sidtravelbot@xyz.com + <b>Thank you &#128519;</b>
+Invalid Email
+No Pranks &#129488; + Please enter a valid E-Mail.
+Invalid Contact
+No Pranks &#128517; + Please enter a 10-digit contact no.
+null
+ 
