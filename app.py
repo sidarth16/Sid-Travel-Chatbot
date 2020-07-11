@@ -5,7 +5,9 @@ import re
 
 
 app = Flask(__name__) 
-chat_bot = ChatBot("Chatterbot")
+# chat_bot = ChatBot("Sid Travel Bot")
+chat_bot = ChatBot("Sid Travel Bot", storage_adapter = "chatterbot.storage.MongoDatabaseAdapter", database = mongodb_name,database_uri = mongodb_uri)
+
 trainer = ListTrainer(chat_bot)
 # trainer.train("chatterbot.corpus.english")
 data = open("data/data_txt.txt" , "r").readlines()
