@@ -5,12 +5,20 @@ import re
 
 
 app = Flask(__name__) 
-chat_bot = ChatBot("Sid Travel Bot")
 
+###-------Chatter-bot-----------####
+chat_bot = ChatBot("Sid Travel Bot")
 trainer = ListTrainer(chat_bot)
 # trainer.train("chatterbot.corpus.english")
 data = open("data/data_txt.txt" , "r").readlines()
 trainer.train(data)
+
+####------Dictionary method instead of chatter-bot-------####
+# chat_bot = dict()
+# for i in range(0,len(data),2):
+##      print(data[i])
+#     chat_bot[data[i][:-1]] = data[i+1][:-1]
+####-----------------------------------------------------####
 
 curOption = 1
 option_dict = {
@@ -130,6 +138,8 @@ def get_bot_response():
 
      print(userText)
      data = data + str(chat_bot.get_response(userText))
+#      data = data + str(chat_bot[userText])   #-----if using dictionary method
+    
      return get_bot_html(data)
 
 @app.route("/getOption")
